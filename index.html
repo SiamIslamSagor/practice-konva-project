@@ -95,11 +95,13 @@
             anchor.offsetX(3);
           }
           // you also can set other properties
-          // e.g. you can set fillPatternImage to set icon to the anchor
+          // e.g. you can set fillPatternImage to set icon to the ancho
         },
         nodes: [],
         keepRatio: true,
-        centeredScaling: true,
+        ignoreStroke: true,
+        // centeredScaling: true,
+
         rotationSnaps: [0, 45, 90, 135, 180, 225, 270],
       });
       layer.add(tr);
@@ -164,10 +166,14 @@
         var shapes = stage.find(".circle, .rect");
         console.log(shapes);
         var box = selectionRectangle.getClientRect();
+        console.log(box);
         var selected = shapes.filter(shape =>
           Konva.Util.haveIntersection(box, shape.getClientRect())
         );
         tr.nodes(selected);
+
+        // to get all selected nodes
+        console.log(tr.nodes());
       });
 
       // clicks should select/deselect shapes
